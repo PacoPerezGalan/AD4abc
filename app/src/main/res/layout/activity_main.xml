@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.pacoperezgalan.ad4a.MainActivity">
+
+    <TextView
+        android:text="SQLite"
+        android:textSize="30dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_titul" />
+
+    <Button
+        android:text="Registrar Alumno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_alumno" />
+
+    <Button
+        android:text="Borrar Alumno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_borrarAlumno" />
+
+    <Button
+        android:text="Registrar Profesor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_profesor" />
+
+    <Button
+        android:text="Borrar Profesor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_borrarProfesor" />
+
+    <Button
+        android:text="Borrar Todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_borrartot"
+        android:layout_marginTop="100dp"
+        android:elevation="1dp"
+        android:layout_gravity="right" />
+
+</LinearLayout>
