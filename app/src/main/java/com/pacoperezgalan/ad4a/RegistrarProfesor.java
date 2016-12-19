@@ -22,7 +22,7 @@ public class RegistrarProfesor extends AppCompatActivity {
     int des;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrar_alumno);
+        setContentView(R.layout.activity_registrar_profesor);
 
         nombre=(EditText) findViewById(R.id.et_nombre);
         edad=(EditText) findViewById(R.id.et_edad);
@@ -41,7 +41,6 @@ public class RegistrarProfesor extends AppCompatActivity {
                 cur=Integer.parseInt(curso.getText().toString());
                 des=Integer.parseInt(despacho.getText().toString());
                 MainActivity.dbAdapter.insertarProfesor(nom,eda,cic,cur,des);
-                setResult(RESULT_OK);
                 finish();
             }
         });

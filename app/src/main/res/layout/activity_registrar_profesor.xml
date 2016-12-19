@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/et_nedad"
+            android:id="@+id/et_edad"
             android:layout_weight="1" />
     </LinearLayout>
 

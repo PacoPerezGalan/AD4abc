@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_consultar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.pacoperezgalan.ad4a.MainActivity">
+    tools:context="com.pacoperezgalan.ad4a.Consultar">
 
     <TextView
-        android:text="SQLite"
+        android:text="Consultar"
         android:textSize="30dp"
         android:gravity="center_horizontal"
         android:textColor="@color/colorPrimary"
@@ -16,58 +16,62 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_titul" />
 
-    <Button
-        android:text="Registrar Alumno"
+    <CheckBox
+        android:text="Alumnos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_alumno" />
+        android:id="@+id/cb_alumnos" />
+
+    <CheckBox
+        android:text="Profesores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_profesores" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <CheckBox
+            android:text="Ciclo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/et_id_alumno"
-            android:layout_width="60dp"
-            android:contentDescription="ID" />
-
-        <Button
-            android:text="Borrar Alumno (mantener)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_borrarAlumno"
+            android:id="@+id/cb_ciclo"
             android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/et_ciclo"
+            android:visibility="invisible"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
-    <Button
-        android:text="Registrar Profesor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_profesor" />
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <CheckBox
+            android:text="Curso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_curso"
+            android:layout_weight="1" />
+
         <EditText
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/et_id_profesor"
-            android:contentDescription="ID" />
-
-        <Button
-            android:text="Borrar Profesor (mantener)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_borrarProfesor"
+            android:id="@+id/et_curso"
+            android:visibility="invisible"
             android:layout_weight="1" />
+
     </LinearLayout>
 
     <Button
@@ -76,13 +80,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_consultar" />
 
-    <Button
-        android:text="Borrar Todo (mantener)"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_borrartot"
-        android:layout_marginTop="100dp"
-        android:elevation="1dp"
-        android:layout_gravity="right" />
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tv_consulta" />
 </LinearLayout>

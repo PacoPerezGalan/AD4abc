@@ -41,7 +41,6 @@ public class RegistrarAlumno extends AppCompatActivity {
                 cur=Integer.parseInt(curso.getText().toString());
                 not=Float.parseFloat(nota.getText().toString());
                 MainActivity.dbAdapter.insertarAlumno(nom,eda,cic,cur,not);
-                setResult(RESULT_OK);
                 finish();
             }
         });
