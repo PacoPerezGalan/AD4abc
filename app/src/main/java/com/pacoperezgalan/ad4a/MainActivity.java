@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View view) {
                 dbAdapter.borrarAlumno(idAlumno.getText().toString());
-                Toast.makeText(getApplicationContext(),"Se ha borrado el alumno",Toast.LENGTH_SHORT);
-                return false;
+                Toast.makeText(getApplicationContext(),"Se ha borrado el alumno",Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
 
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View view) {
                 dbAdapter.borrarProfesor(idProfesor.getText().toString());
-                Toast.makeText(getApplicationContext(),"Se ha borrado el profesor",Toast.LENGTH_SHORT);
-                return false;
+                Toast.makeText(getApplicationContext(),"Se ha borrado el profesor",Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
 
@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View view) {
                 dbAdapter.borrarTodo();
-                Toast.makeText(getApplicationContext(),"Se ha borrado todo",Toast.LENGTH_SHORT);
-                return false;
+                Toast.makeText(getApplicationContext(),"Se ha borrado todo",Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
     }

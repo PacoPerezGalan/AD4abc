@@ -27,10 +27,11 @@ public class MyDBAdapter {
     private static final String NOTA = "nota";
     private static final String DESPACHO = "despacho";
 
-    private static final String DATABASE_CREATE = "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE1+" (id integer primary key autoincrement, nombre text, edad integer, ciclo text, curso integer, nota float ); " +
-            "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE2+" (id integer primary key autoincrement, nombre text, edad integer, ciclo text, curso integer, despacho integer );";
-    private static final String DATABASE_DROP = "DROP TABLE IF EXISTS "+DATABASE_TABLE1+"; " +
-            "DROP TABLE IF EXISTS "+DATABASE_TABLE2+";";
+    private static final String DATABASE_CREATE1 = "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE1+" (id integer primary key autoincrement, nombre text, edad integer, ciclo text, curso integer, nota float ); ";
+
+    private static final String DATABASE_CREATE2 ="CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE2+" (id integer primary key autoincrement, nombre text, edad integer, ciclo text, curso integer, despacho integer );";
+
+    private static final String DATABASE_DROP = "DROP TABLE IF EXISTS "+DATABASE_TABLE1+","+DATABASE_TABLE2+";";
 
     // Contexto de la aplicación que usa la base de datos
     private final Context context;
@@ -93,9 +94,10 @@ public class MyDBAdapter {
         db.execSQL(DATABASE_DROP);
     }
 
-    public ArrayList<String> consultar(boolean alum, boolean prof, String cic, String cur){
-        ArrayList<String> result=new ArrayList<>();
+    public ArrayList<Item> consultar(boolean alum, boolean prof, String cic, String cur){
+        ArrayList<Item> result=new ArrayList<>();
         Cursor cursor=null;
+
         if(alum) {
             if(cic!=null && cur!=null){
                 cursor = db.query(DATABASE_TABLE1,null,"ciclo=? and curso=?",new String[]{cic,cur},null,null,null);
@@ -105,6 +107,12 @@ public class MyDBAdapter {
                 cursor = db.query(DATABASE_TABLE1,null,"curso=?",new String[]{cur},null,null,null);
             }else {
                 cursor = db.query(DATABASE_TABLE1, null, null, null, null, null, null);
+            }
+
+            if(cursor != null && cursor.moveToFirst()){
+                do{
+                    result.add(new Item("alum",cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+                }while (cursor.moveToNext());
             }
         }
 
@@ -118,13 +126,15 @@ public class MyDBAdapter {
             }else {
                 cursor = db.query(DATABASE_TABLE2, null, null, null, null, null, null);
             }
+
+            if(cursor != null && cursor.moveToFirst()){
+                do{
+                    result.add(new Item("prof",cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+                }while (cursor.moveToNext());
+            }
         }
 
-        if(cursor != null && cursor.moveToFirst()){
-            do{
-                result.add(cursor.getString(0)+"\t"+cursor.getString(1));
-            }while (cursor.moveToNext());
-        }
+
 
         return result;
     }
@@ -137,7 +147,8 @@ public class MyDBAdapter {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL(DATABASE_CREATE);
+            db.execSQL(DATABASE_CREATE1);
+            db.execSQL(DATABASE_CREATE2);
         }
 
         @Override

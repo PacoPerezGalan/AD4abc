@@ -2,6 +2,7 @@ package com.pacoperezgalan.ad4a;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,6 +24,8 @@ public class Consultar extends AppCompatActivity {
     EditText etCurso;
     Button consultar;
     TextView text;
+    RecyclerView recyclerView;
+    ArrayList<Item> items;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,12 +94,14 @@ public class Consultar extends AppCompatActivity {
                     cur=null;
                 }
 
-                ArrayList<String> result=MainActivity.dbAdapter.consultar(alum,prof,cic,cur);
+                items=MainActivity.dbAdapter.consultar(alum,prof,cic,cur);
+                /*
                 String texto="";
                 for(int i=0;i<result.size();i++){
                     texto=texto+result.get(i)+"\n";
                 }
                 text.setText(texto);
+                */
             }
         });
     }
