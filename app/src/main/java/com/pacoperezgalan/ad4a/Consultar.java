@@ -2,6 +2,7 @@ package com.pacoperezgalan.ad4a;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -23,9 +24,11 @@ public class Consultar extends AppCompatActivity {
     EditText etCiclo;
     EditText etCurso;
     Button consultar;
-    TextView text;
     RecyclerView recyclerView;
+    LinearLayoutManager layoutManager;
+
     ArrayList<Item> items;
+    RecyclerAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,16 @@ public class Consultar extends AppCompatActivity {
         etCiclo=(EditText) findViewById(R.id.et_ciclo);
         etCurso=(EditText) findViewById(R.id.et_curso);
         consultar=(Button) findViewById(R.id.btn_consultar);
-        text=(TextView) findViewById(R.id.tv_consulta);
+        //text=(TextView) findViewById(R.id.tv_consulta);
+
+        recyclerView=(RecyclerView) findViewById(R.id.recycler);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        items=new ArrayList<>();
+
+
+        recyclerView.setAdapter(adapter);
 
         ciclo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -95,13 +107,11 @@ public class Consultar extends AppCompatActivity {
                 }
 
                 items=MainActivity.dbAdapter.consultar(alum,prof,cic,cur);
-                /*
-                String texto="";
-                for(int i=0;i<result.size();i++){
-                    texto=texto+result.get(i)+"\n";
-                }
-                text.setText(texto);
-                */
+                adapter=new RecyclerAdapter(items);
+                recyclerView.setAdapter(adapter);
+
+
+
             }
         });
     }

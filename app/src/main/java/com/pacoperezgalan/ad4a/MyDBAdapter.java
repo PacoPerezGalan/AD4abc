@@ -94,6 +94,7 @@ public class MyDBAdapter {
         db.execSQL(DATABASE_DROP);
     }
 
+
     public ArrayList<Item> consultar(boolean alum, boolean prof, String cic, String cur){
         ArrayList<Item> result=new ArrayList<>();
         Cursor cursor=null;
@@ -111,7 +112,7 @@ public class MyDBAdapter {
 
             if(cursor != null && cursor.moveToFirst()){
                 do{
-                    result.add(new Item("alum",cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+                    result.add(new Item("Alum",cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
                 }while (cursor.moveToNext());
             }
         }
@@ -129,7 +130,7 @@ public class MyDBAdapter {
 
             if(cursor != null && cursor.moveToFirst()){
                 do{
-                    result.add(new Item("prof",cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+                    result.add(new Item("Prof",cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
                 }while (cursor.moveToNext());
             }
         }
