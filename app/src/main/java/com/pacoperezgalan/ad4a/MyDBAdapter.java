@@ -31,7 +31,8 @@ public class MyDBAdapter {
 
     private static final String DATABASE_CREATE2 ="CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE2+" (id integer primary key autoincrement, nombre text, edad integer, ciclo text, curso integer, despacho integer );";
 
-    private static final String DATABASE_DROP = "DROP TABLE IF EXISTS "+DATABASE_TABLE1+","+DATABASE_TABLE2+";";
+    private static final String DATABASE_DROP = "DELETE FROM "+DATABASE_TABLE1+";";
+    private static final String DATABASE_DROP2 = "DELETE FROM "+DATABASE_TABLE2+";";
 
     // Contexto de la aplicación que usa la base de datos
     private final Context context;
@@ -138,6 +139,14 @@ public class MyDBAdapter {
 
 
         return result;
+    }
+
+    public void modificar(String es,String nom1,String cic1,String cur1,String nom2,String cic2,String cur2){
+        if(es.compareTo("Alum")==0) {
+            db.execSQL("UPDATE "+DATABASE_TABLE1+" SET nombre='"+nom2+"',ciclo='"+cic2+"',curso='"+cur2+"' WHERE nombre LIKE '"+nom1+"' AND ciclo LIKE '"+cic1+"' AND curso LIKE '"+cur1+"'" );
+        }else{
+            db.execSQL("UPDATE "+DATABASE_TABLE2+" SET nombre='"+nom2+"',ciclo='"+cic2+"',curso='"+cur2+"' WHERE nombre LIKE '"+nom1+"' AND ciclo LIKE '"+cic1+"' AND curso LIKE '"+cur1+"'" );
+        }
     }
 
     private static class MyDbHelper extends SQLiteOpenHelper {
